@@ -35,6 +35,6 @@ if [ ! -f ./tg/tgcli ]; then
    echo -e "     > Thunder  [Beta]   Bolt                   "
    echo -e "                                              \033[0;00m"
    echo -e "\e[36m"
-   ./tg/tgcli -s ./bot/system.lua -l 1 -E $@
+   ./tg/tgcli -s ./core/system.lua -l 1 -E $@
 fi
 		
