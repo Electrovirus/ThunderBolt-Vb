@@ -99,7 +99,7 @@ tdcli_function ({
     user_id_ = data.sender_user_id_
   }, admindem_cb, {chat_id=data.chat_id_,user_id=data.sender_user_id_})
   end
-    if cmd == "visudo" then
+    if cmd == "+sudo" then
 local function visudo_cb(arg, data)
 if data.username_ and not data.username_:match("_") then
 user_name = '@'..data.username_
@@ -119,7 +119,7 @@ tdcli_function ({
     user_id_ = data.sender_user_id_
   }, visudo_cb, {chat_id=data.chat_id_,user_id=data.sender_user_id_})
   end
-    if cmd == "desudo" then
+    if cmd == "-sudo" then
 local function desudo_cb(arg, data)
 if data.username_ and not data.username_:match("_") then
 user_name = '@'..data.username_
@@ -166,7 +166,7 @@ if not is_admin1(data.id_) then
 		save_config()
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _has been demoted from_ *admin*", 0, "md")
 end
-    if cmd == "visudo" then
+    if cmd == "+sudo" then
 if already_sudo(tonumber(data.id_)) then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already a_ *sudoer*", 0, "md")
    end
@@ -175,7 +175,7 @@ if already_sudo(tonumber(data.id_)) then
      reload_plugins(true)
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is now_ *sudoer*", 0, "md")
 end
-    if cmd == "desudo" then
+    if cmd == "-sudo" then
      if not already_sudo(data.id_) then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *sudoer*", 0, "md")
    end
@@ -211,7 +211,7 @@ if not is_admin1(data.id_) then
 		save_config()
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _has been demoted from_ *admin*", 0, "md")
 end
-    if cmd == "visudo" then
+    if cmd == "+sudo" then
 if already_sudo(tonumber(data.id_)) then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is already a_ *sudoer*", 0, "md")
    end
@@ -220,7 +220,7 @@ if already_sudo(tonumber(data.id_)) then
      reload_plugins(true)
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is now_ *sudoer*", 0, "md")
 end
-    if cmd == "desudo" then
+    if cmd == "-sudo" then
      if not already_sudo(data.id_) then
     return tdcli.sendMessage(arg.chat_id, "", 0, "_User_ "..user_name.." *"..data.id_.."* _is not a_ *sudoer*", 0, "md")
    end
@@ -233,46 +233,46 @@ end
 
 local function run(msg, matches)
  if tonumber(msg.sender_user_id_) == 157059515 then --Put Your ID
-if matches[1] == "visudo" then
+if matches[1] == "+sudo" then
 if not matches[2] and tonumber(msg.reply_to_message_id_) ~= 0 then
     tdcli_function ({
       ID = "GetMessage",
       chat_id_ = msg.chat_id_,
       message_id_ = msg.reply_to_message_id_
-    }, action_by_reply, {chat_id=msg.chat_id_,cmd="visudo"})
+    }, action_by_reply, {chat_id=msg.chat_id_,cmd="+sudo"})
   end
   if matches[2] and string.match(matches[2], '^%d+$') then
 tdcli_function ({
     ID = "GetUser",
     user_id_ = matches[2],
-  }, action_by_id, {chat_id=msg.chat_id_,user_id=matches[2],cmd="visudo"})
+  }, action_by_id, {chat_id=msg.chat_id_,user_id=matches[2],cmd="+sudo"})
     end
   if matches[2] and not string.match(matches[2], '^%d+$') then
    tdcli_function ({
       ID = "SearchPublicChat",
       username_ = matches[2]
-    }, action_by_username, {chat_id=msg.chat_id_,username=matches[2],cmd="visudo"})
+    }, action_by_username, {chat_id=msg.chat_id_,username=matches[2],cmd="sudo"})
       end
    end
-if matches[1] == "desudo" then
+if matches[1] == "-sudo" then
 if not matches[2] and tonumber(msg.reply_to_message_id_) ~= 0 then
     tdcli_function ({
       ID = "GetMessage",
       chat_id_ = msg.chat_id_,
       message_id_ = msg.reply_to_message_id_
-    }, action_by_reply, {chat_id=msg.chat_id_,cmd="desudo"})
+    }, action_by_reply, {chat_id=msg.chat_id_,cmd="-sudo"})
   end
   if matches[2] and string.match(matches[2], '^%d+$') then
 tdcli_function ({
     ID = "GetUser",
     user_id_ = matches[2],
-  }, action_by_id, {chat_id=msg.chat_id_,user_id=matches[2],cmd="desudo"})
+  }, action_by_id, {chat_id=msg.chat_id_,user_id=matches[2],cmd="-sudo"})
     end
   if matches[2] and not string.match(matches[2], '^%d+$') then
    tdcli_function ({
       ID = "SearchPublicChat",
       username_ = matches[2]
-    }, action_by_username, {chat_id=msg.chat_id_,username=matches[2],cmd="desudo"})
+    }, action_by_username, {chat_id=msg.chat_id_,username=matches[2],cmd="-sudo"})
       end
    end
 end
@@ -372,7 +372,7 @@ end
 if matches[1] == 'sudolist' and is_sudo(msg) then
 return sudolist(msg)
     end
-if matches[1] == 'beyond' then
+if matches[1] == 'TB' then
 return tdcli.sendMessage(msg.chat_id_, msg.id_, 1, _config.info_text, 1, 'html')
     end
 if matches[1] == 'adminlist' and is_admin(msg) then
@@ -403,11 +403,11 @@ local hash = 'auto_leave_bot'
 end
 return { 
 patterns = { 
-"^[!/#](visudo)$", 
-"^[!/#](desudo)$",
+"^[!/#](+sudo)$", 
+"^[!/#](-sudo)$",
 "^[!/#](sudolist)$",
-"^[!/#](visudo) (.*)$", 
-"^[!/#](desudo) (.*)$",
+"^[!/#](+sudo) (.*)$", 
+"^[!/#](-sudo) (.*)$",
 "^[!/#](adminprom)$", 
 "^[!/#](admindem)$",
 "^[!/#](adminlist)$",
@@ -415,7 +415,7 @@ patterns = {
 "^[!/#](admindem) (.*)$",
 "^[!/#](leave)$",
 "^[!/#](autoleave) (.*)$", 
-"^[!/#](beyond)$",
+"^[!/#](TB)$",
 "^[!/#](creategroup) (.*)$",
 "^[!/#](createsuper) (.*)$",
 "^[!/#](tosuper)$",
