@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd $HOME/BDReborn
+cd $HOME/tdcli
 
 install() {
 	    cd tg
@@ -32,9 +32,9 @@ if [ ! -f ./tg/tgcli ]; then
  fi
 
    echo -e "\033[38;5;208m"
-   echo -e "     > BeyondTeam Source :D                        "
+   echo -e "     > Thunder  [Beta]   Bolt                   "
    echo -e "                                              \033[0;00m"
    echo -e "\e[36m"
-   ./tg/tgcli -s ./bot/bot.lua -l 1 -E $@
+   ./tg/tgcli -s ./bot/system.lua -l 1 -E $@
 fi
 		
