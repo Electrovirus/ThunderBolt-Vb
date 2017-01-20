@@ -1,7 +1,7 @@
 tdcli = dofile('./tg/tdcli.lua')
 serpent = (loadfile "./libs/serpent.lua")()
 feedparser = (loadfile "./libs/feedparser.lua")()
-our_id = 0
+our_id = 235691047
 json = (loadfile "./libs/JSON.lua")()
 mimetype = (loadfile "./libs/mimetype.lua")()
 redis = (loadfile "./libs/redis.lua")()
@@ -72,11 +72,11 @@ function create_config( )
   -- A simple config with basic plugins and ourselves as privileged user
   config = {
     enabled_plugins = {
-    "banhammer",
-    "groupmanager",
-    "msg-checks",
-    "plugins",
-    "tools"
+    "Analyzer",
+    "Administartion",
+    "",
+    "Plugins",
+    "Tools"
  },
     sudo_users = {184018132},
     admins = {},
