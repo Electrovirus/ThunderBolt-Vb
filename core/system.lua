@@ -73,7 +73,7 @@ function create_config( )
   config = {
     enabled_plugins = {
     "Analyzer",
-    "Administartion",
+    "Administration",
     "Protection",
     "Plugins",
     "Tools"
