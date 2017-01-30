@@ -660,7 +660,7 @@ end
 
 
 local settings = data[tostring(target)]["settings"] 
-local text = "*Group Settings:*\n_Lock edit :_ *"..settings.lock_edit.."*\n_Lock links :_ *"..settings.lock_link.."*\n_Lock tags :_ *"..settings.lock_tag.."*\n_Lock flood :_ *"..settings.flood.."*\n_Lock spam :_ *"..settings.lock_spam.."*\n_Lock mention :_ *"..settings.lock_mention.."*\n_Lock webpage :_ *"..settings.lock_webpage.."*\n_Lock markdown :_ *"..settings.lock_markdown.."*\n_Bots protection :_ *"..settings.lock_bots.."*\n_Flood sensitivity :_ *"..NUM_MSG_MAX.."*"
+local text = "*#⃣Supergroup settings\n┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅┅\n*_📍Lock edit :_ *"..settings.lock_edit.."*\n_📍Lock links :_ *"..settings.lock_link.."*\n_📍Lock tags :_ *"..settings.lock_tag.."*\n_📍Lock flood :_ *"..settings.flood.."*\n_📍Lock spam :_ *"..settings.lock_spam.."*\n_📍Lock mention :_ *"..settings.lock_mention.."*\n_📍Lock webpage :_ *"..settings.lock_webpage.."*\n_📍Lock markdown :_ *"..settings.lock_markdown.."*\n📍Lock Api Bots:_ *"..settings.lock_bots.."*\n_📍Flood sensitivity :_ *"..NUM_MSG_MAX.."*"
 return text
 end
 --------Mutes---------
